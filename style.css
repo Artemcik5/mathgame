@@ -1,0 +1,142 @@
+:root {
+  --accent: #00bfff;
+  --accent-glow: rgba(0, 191, 255, 0.6);
+  --bg: #0c0c0c;
+  --text: #f5f5f5;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 40px;
+}
+
+h1 {
+  font-size: 2.4em;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.container {
+  background: #141414;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.1);
+  padding: 25px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.menu, .game { display: none; width: 100%; max-width: 420px; }
+.menu.active, .game.active { display: flex; }
+
+.btn {
+  background: var(--accent);
+  color: #000;
+  font-size: 1.1em;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  margin: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+  box-shadow: 0 0 10px var(--accent-glow);
+  width: 90%;
+}
+
+.btn:hover { background: #33ccff; transform: scale(1.05); }
+
+select {
+  font-size: 1em;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 10px;
+  border: 2px solid var(--accent);
+  background: #1a1a1a;
+  color: var(--text);
+  width: 90%;
+}
+
+#problem {
+  font-size: 2.2em;
+  margin: 25px 0;
+  padding: 15px 30px;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  box-shadow: 0 0 8px var(--accent-glow);
+  transition: all 0.2s ease-in-out;
+}
+
+input {
+  font-size: 1.3em;
+  padding: 10px;
+  width: 140px;
+  text-align: center;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: var(--accent);
+  outline: none;
+}
+
+#score, #timer { font-size: 1.1em; margin-top: 10px; }
+
+.small-btn {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  box-shadow: none;
+  margin-top: 20px;
+  width: 120px;
+}
+
+.small-btn:hover { background: var(--accent); color: #000; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes flashCorrect {
+  0%, 100% { color: var(--text); }
+  25%, 75% { color: #5cff8d; text-shadow: 0 0 15px #5cff8d; }
+}
+
+@keyframes flashWrong {
+  0%, 100% { color: var(--text); }
+  25%, 75% { color: #ff5757; text-shadow: 0 0 15px #ff5757; }
+}
+
+.animate-correct { animation: flashCorrect 0.4s ease; }
+.animate-wrong { animation: flashWrong 0.4s ease; }
+.options {
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.options.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+button {
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.options button {
+  margin-top: 12px;
+}
